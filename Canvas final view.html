@@ -1,0 +1,319 @@
+<html> 
+	<head>
+	<title> Funny points </title>
+	</head>
+
+	<body>
+		<canvas id="canvas1" width="350" height="350" style="border:2px dashed #000000;"></canvas>
+		<canvas id="canvas2" width="350" height="350" style="border:2px dotted #000000;"></canvas>
+		<canvas id="canvas3" width="350" height="350" style="border:2px dashed #000000;"></canvas>
+		<canvas id="canvas4" width="350" height="350" style="border:2px dotted #000000;"></canvas>
+		<canvas id="canvas5" width="350" height="350" style="border:2px dashed #000000;"></canvas> 
+		<canvas id="canvas6" width="350" height="350" style="border:2px dotted #000000;"></canvas>		
+		<script>
+	//BASIC
+	        let canvas1 = document.getElementById("canvas1");
+			let context1 = canvas1.getContext("2d");
+
+	        const NUM_POINTS1 = 5;       
+			const points1 = [];
+
+			for(let i = 0; i < NUM_POINTS1; i++) {
+
+			 	points1.push({
+				    x: Math.random() * canvas1.width,
+				    y: Math.random() * canvas1.height,
+				    width: Math.random() * 10,
+				    height: Math.random() * 10,
+				    xDelta: 1, 
+				    yDelta: 1, 
+		            color: "red"
+			  	});
+			};
+	      
+	      	const draw1 = function() {
+	        	context1.clearRect(0,0,canvas1.width, canvas1.height);
+				points1.forEach(function(point1) {  	
+	            	context1.fillStyle = point1.color;
+	                context1.fillRect(point1.x, point1.y, point1.width, point1.height);
+	                if(point1.x + point1.width > canvas1.width || point1.x < 0) {
+						 point1.xDelta *= -1;				 
+	                } else if(point1.y + point1.height > canvas1.height || point1.y < 0) {
+						 point1.yDelta *= -1;
+	                };
+	            	point1.x = point1.x + point1.xDelta;
+				    point1.y = point1.y + point1.yDelta;
+				});	         	 
+	        }; 
+	      
+	        let animate1 = function() {
+		    	draw1();
+			    setTimeout(animate1, 10);  
+			}; 
+	    
+			animate1(); 
+
+	//Direction, number of points
+	        let canvas2 = document.getElementById("canvas2");
+			let context2 = canvas2.getContext("2d");
+
+	        const NUM_POINTS2 = 100;       
+			const points2 = [];
+
+			for(let i = 0; i < NUM_POINTS2; i++) {
+
+			 	points2.push({
+				    x: Math.random() * canvas2.width,
+				    y: Math.random() * canvas2.height,
+				    width: Math.random() * 10,
+				    height: Math.random() * 10,
+				    xDelta: -1, 
+				    yDelta: 1, 
+		            color: "red"
+			  	});
+			};
+	      
+	      	const draw2 = function() {
+	        	context2.clearRect(0,0,canvas2.width, canvas2.height);
+				points2.forEach(function(point2) {  	
+	            	context2.fillStyle = point2.color;
+	                context2.fillRect(point2.x, point2.y, point2.width, point2.height);
+	                if(point2.x + point2.width > canvas2.width || point2.x < 0) {
+						 point2.xDelta *= -1;				 
+	                } else if(point2.y + point2.height > canvas2.height || point2.y < 0) {
+						 point2.yDelta *= -1;
+	                };
+	            	point2.x = point2.x + point2.xDelta;
+				    point2.y = point2.y + point2.yDelta;
+				});	         	 
+	        }; 
+	      
+	        let animate2 = function() {
+		    	draw2();
+			    setTimeout(animate2, 10);  
+			}; 
+	    
+			animate2();            
+	                        
+    //Color	
+          
+	        let canvas3 = document.getElementById("canvas3");
+			let context3 = canvas3.getContext("2d");
+
+	        const NUM_POINTS3 = 500;    
+			const points3 = [];
+
+			function getRandomColor() {
+				let letters = '0123456789ABCDEF';
+				let color = '#';
+				for (let i = 0; i < 6; i++ ) {
+				    color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}   
+
+			
+			for(let i = 0; i < NUM_POINTS3; i++) {
+
+			 	points3.push({
+				    x: Math.random() * canvas3.width,
+				    y: Math.random() * canvas3.height,
+				    width: Math.random() * 10,
+				    height: Math.random() * 10,
+				    xDelta: 1, 
+				    yDelta: 1, 
+		            color: getRandomColor()
+
+			  	});
+			};
+	      
+	      	const draw3 = function() {
+	        	context3.clearRect(0,0,canvas3.width, canvas3.height);
+				points3.forEach(function(point3) {  	
+	            	context3.fillStyle = point3.color;
+	                context3.fillRect(point3.x, point3.y, point3.width, point3.height);
+	                if(point3.x + point3.width > canvas3.width || point3.x < 0) {
+						 point3.xDelta *= -1;				 
+	                } else if(point3.y + point3.height > canvas3.height || point3.y < 0) {
+						 point3.yDelta *= -1;
+	                };
+	            	point3.x = point3.x + point3.xDelta;
+				    point3.y = point3.y + point3.yDelta;
+				});	         	 
+	        };  
+	      
+	        let animate3 = function() {
+		    	draw3();
+			    setTimeout(animate3, 10);  
+			}; 
+	     
+			animate3(); 
+          	
+     //Bouncing Squares       
+          	          
+		 	let canvas4 = document.getElementById("canvas4");
+			let context4 = canvas4.getContext("2d");
+
+	        const NUM_POINTS4 = 100;    
+			const points4 = [];
+
+			function getRandomColor() {
+				let letters = '0123456789ABCDEF';
+				let color = '#';
+				for (let i = 0; i < 6; i++ ) {
+				    color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}   
+
+			for(let i = 0; i < NUM_POINTS4; i++) {
+
+			 	points4.push({
+				    x: Math.random() * canvas4.width,
+				    y: Math.random() * canvas4.height,
+				    width:  10,
+				    height: 10,
+				    xDelta: 1, 
+				    yDelta: 1, 
+		            color: getRandomColor()
+			  	});
+			};
+	      
+	      	const draw4 = function() {
+	        	context4.clearRect(0,0,canvas4.width, canvas4.height);
+				points4.forEach(function(point4) {  	
+	            	context4.fillStyle = point4.color;
+	                context4.fillRect(point4.x, point4.y, point4.width, point4.height);
+	                if(point4.x + point4.width > canvas4.width || point4.x < 0) {
+						 point4.xDelta *= -1;				 
+	                } else if(point4.y + point4.height > canvas4.height || point4.y < 0) {
+						 point4.yDelta *= -1;
+	                };
+	            	point4.x = point4.x + point4.xDelta;
+				    point4.y = point4.y + point4.yDelta;
+				});	         	 
+	        }; 
+	      
+	        let animate4 = function() {
+		    	draw4();
+			    setTimeout(animate4, 10);  
+			}; 
+	    
+			animate4();
+
+	//Bouncing Balls
+          
+          	let canvas5 = document.getElementById("canvas5");
+			let context5 = canvas5.getContext("2d");
+
+	        const NUM_POINTS5 = 200;    
+			const points5 = [];
+
+			function getRandomColor() {
+				let letters = '0123456789ABCDEF';
+				let color = '#';
+				for (let i = 0; i < 6; i++ ) {
+				    color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}   
+
+			
+			for(let i = 0; i < NUM_POINTS5; i++) {
+
+			 	points5.push({
+				    x: Math.random() * 500 ,
+				    y: Math.random() * 500,
+				    circRad : Math.random() * 10,
+		            color: getRandomColor(),
+		            xDelta: 1,
+		            yDelta: 1,
+
+			  	});
+			};
+	      
+	      	const draw5= function() {
+	        	context5.clearRect(0,0,canvas5.width, canvas5.height);
+				points5.forEach(function(point5) {  	
+	            	context5.fillStyle = point5.color;
+	            	context5.beginPath();
+	                context5.arc(point5.x, point5.y,point5.circRad,0,2*Math.PI, true);
+                  	context5.closePath();
+	                context5.fill();
+	                if(point5.x + point5.circRad > canvas5.width || point5.x-point5.circRad < 0) {
+						 point5.xDelta *= -1;				 
+	                } else if(point5.y + point5.circRad > canvas5.height || point5.y-point5.circRad < 0) {
+						 point5.yDelta *= -1;
+	                };
+	            	point5.x = point5.x + point5.xDelta;
+				    point5.y = point5.y + point5.yDelta;
+				});	         	 
+	        }; 
+	      
+	        let animate5 = function() {
+		    	draw5();
+			    setTimeout(animate5, 10);  
+			}; 
+	     
+			animate5();
+	//Bouncing Empty circles
+          
+          	let canvas6 = document.getElementById("canvas6");
+			let context6 = canvas6.getContext("2d");
+
+	        const NUM_POINTS6 = 100;    
+			const points6 = [];
+
+			function getRandomColor() {
+				let letters = '0123456789ABCDEF';
+				let color = '#';
+				for (let i = 0; i < 6; i++ ) {
+				    color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}   
+
+			
+			for(let i = 0; i < NUM_POINTS6; i++) {
+
+			 	points6.push({
+				    x: Math.random() * 500 ,
+				    y: Math.random() * 500,
+				    circRad : Math.random() * 10,
+		            color: getRandomColor(),
+		            xDelta: 1,
+		            yDelta: 1,
+
+			  	});
+			};
+	      
+	      	const draw6 = function() {
+	        	context6.clearRect(0,0,canvas6.width, canvas6.height);
+				points6.forEach(function(point6) {  	
+	            	context6.strokeStyle = point6.color;  
+	            	context6.beginPath();
+	                context6.arc(point6.x, point6.y,point6.circRad,0,2*Math.PI, true);
+                  	context6.closePath();
+                  	context6.lineWidth=4;
+	                context6.stroke();  
+	                if(point6.x + point6.circRad > canvas6.width || point6.x-point6.circRad < 0) {
+						 point6.xDelta *= -1;				 
+	                } else if(point6.y + point6.circRad > canvas6.height || point6.y-point6.circRad < 0) {
+						 point6.yDelta *= -1;
+	                };
+	            	point6.x = point6.x + point6.xDelta;
+				    point6.y = point6.y + point6.yDelta;
+				});	         	 
+	        }; 
+	      
+	        let animate6 = function() {
+		    	draw6();
+			    setTimeout(animate6, 10);  
+			}; 
+	     
+			animate6();
+           
+      </script> 
+            
+  </body>
+</html>
